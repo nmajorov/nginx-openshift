@@ -35,6 +35,11 @@ http://eap-app.nproject.svc:8080/html5-frontend-1.0-SNAPSHOT/
 +
 ....
  oc new-app  nginx~https://git.majorov.biz/nmajorov/nginx-openshift.git --name=nrp
+
+ #create route by exposing service
+ oc expose service nrp
+
 ....
 
-Now nginx router will forward all requests to JEE application by hitting a / path.
+Now
+ nginx router will forward all requests to JEE application by hitting a / path.
