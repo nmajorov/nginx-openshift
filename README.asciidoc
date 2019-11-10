@@ -14,26 +14,27 @@ You have several options to achieve it:
 
 1.  Redeploy an app as ROOT.war
 
-2.  Change router as it described here:
+2.  Change router as it described https://docs.openshift.com/container-platform/3.11/install_config/router/customized_haproxy_router.html[here in OSE 3.11 documentation
+]
 
-https://docs.openshift.com/container-platform/3.11/install_config/router/customized_haproxy_router.html
-
-1.  Don’t expose router of JEE application but instead create an reverse
+3. Don’t expose router of JEE application but instead create an reverse
 proxy with another container.
 
 This example illustrate an deployment nginx as reverse proxy to other
-eap applicaion inside same namespace in openshift.
+eap applicaion inside same namespace in openshift:
 
-1.  Deploy you JEE applicaion in openshift, but don’t expose route to
-outside. So your applicaion is available to call in same namespace by
+
+*  Deploy you JEE application in openshift, but don’t expose route to
+outside world. Your application is available to call in same namespace by
+accessing a server name:
 
 http://eap-app.nproject.svc:8080/html5-frontend-1.0-SNAPSHOT/
 
 
-2.  Deploy nginx container with reverse proxy configuration:
+* Deploy nginx container with reverse proxy configuration:
 +
 ....
  oc new-app  nginx~https://git.majorov.biz/nmajorov/nginx-openshift.git --name=nrp
 ....
 
-and call exposer router
+Now nginx router will forward all requests to JEE application by hitting a / path.
