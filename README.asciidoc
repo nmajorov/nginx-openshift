@@ -8,9 +8,12 @@ internal address:
      localhost:8080/html5-frontend-1.0-SNAPSHOT/
 ....
 
-and want to access it by openshift router hitting url path / it's not that simple.
+and want to access it by openshift router hitting url path / - it's not that simple.
 
-You have several options to achieve it:
+See more about it in https://docs.openshift.com/container-platform/3.11/architecture/networking/routes.html#path-based-routes[documentation].
+
+
+You still have several options to achieve it:
 
 1.  Redeploy an app as ROOT.war
 
@@ -26,7 +29,7 @@ eap applicaion inside same namespace in openshift:
 
 *  Deploy you JEE application in openshift, but don’t expose route to
 outside world. Your application is available to call in same namespace by
-accessing a server name:
+accessing a service name:
 
 http://eap-app.nproject.svc:8080/html5-frontend-1.0-SNAPSHOT/
 
